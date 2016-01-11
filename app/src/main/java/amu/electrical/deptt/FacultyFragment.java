@@ -96,7 +96,7 @@ public class FacultyFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(rv.getContext()));
         rv.setItemAnimator(new DefaultItemAnimator());
 
-        list = new ArrayList<FacultyMember>();
+        list = new ArrayList<Object>();
 
         String[] names = loadStringArray(R.array.works_names);
         String[] designations = loadStringArray(R.array.works_designation);
@@ -104,6 +104,8 @@ public class FacultyFragment extends Fragment {
         String[] mobiles = loadStringArray(R.array.works_mobile);
         String[] intexts = loadStringArray(R.array.works_intext);
 
+
+        list.add("Works and Maintenance");
         for (int i = 0; i < names.length; i++) {
             try {
                 list.add(new FacultyMember(names[i], designations[i], responsibilities[i], mobiles[i], intexts[i]));
@@ -117,6 +119,7 @@ public class FacultyFragment extends Fragment {
         responsibilities = loadStringArray(R.array.supply_responsibility);
         mobiles = loadStringArray(R.array.supply_mobile);
 
+        list.add("Supply Service Section");
         for (int i = 0; i < names.length; i++) {
             list.add(new FacultyMember(names[i], designations[i], responsibilities[i], mobiles[i], ""));
         }
@@ -135,6 +138,8 @@ public class FacultyFragment extends Fragment {
                 designations = loadStringArray(R.array.office_designation);
                 mobiles = loadStringArray(R.array.office_mobile);
 
+                list.add("Office Staff");
+
                 for (int i = 0; i < names.length; i++) {
                     list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
                 }
@@ -145,6 +150,7 @@ public class FacultyFragment extends Fragment {
                 designations = loadStringArray(R.array.technical_designation);
                 mobiles = loadStringArray(R.array.technical_mobile);
 
+                list.add("Technical Staff");
                 for (int i = 0; i < names.length; i++) {
                     list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
                 }
@@ -155,6 +161,7 @@ public class FacultyFragment extends Fragment {
                 designations = loadStringArray(R.array.daily_designation);
                 mobiles = loadStringArray(R.array.daily_mobile);
 
+                list.add("Daily Wager Staff");
                 for (int i = 0; i < names.length; i++) {
                     list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
                 }

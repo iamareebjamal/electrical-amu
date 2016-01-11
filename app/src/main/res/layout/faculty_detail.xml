@@ -14,12 +14,12 @@
             android:layout_alignParentRight="true"
             app:layout_anchor="@id/rootcard"
             app:layout_anchorGravity="top|right|end"
-            android:src="@drawable/ic_arrow_down_white_48dp"
+            android:src="@drawable/ic_arrow_down"
             android:layout_margin="@dimen/fab_margin"
             app:borderWidth="0dp"
             app:elevation="5dp"
             app:fabSize="mini"
-            app:backgroundTint="#EC4A88"
+            app:backgroundTint="@color/pink_500"
             android:clickable="true"
     />
 
@@ -30,7 +30,7 @@
             android:id="@+id/title"
             android:padding="5dp"
             android:textSize="18sp"
-            android:textColor="#343434"/>
+            android:textColor="@color/text_light"/>
 
     <TextView
             android:layout_height="wrap_content"
@@ -72,13 +72,18 @@
                     android:layout_weight="1.0"
                     android:gravity="center_vertical">
 
-                <TextView
+                <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/call"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="Mobile No :"
-                        android:padding="5dp"
-                        android:textStyle="bold"
-                        android:textColor="#434343"/>
+                        android:src="@drawable/ic_phone"
+                        android:layout_margin="@dimen/fab_margin"
+                        app:borderWidth="0dp"
+                        app:elevation="5dp"
+                        app:fabSize="mini"
+                        app:backgroundTint="@color/cyan"
+                        android:clickable="true"
+                        />
 
                 <TextView
                         android:layout_height="wrap_content"
@@ -86,6 +91,7 @@
                         android:layout_width="wrap_content"
                         android:text="+91 7417108769"
                         android:padding="2dp"
+                        android:textColor="@color/cyan"
                         android:id="@+id/mobNo"/>
 
             </LinearLayout>

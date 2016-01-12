@@ -20,6 +20,7 @@
     <uses-permission android:name="amu.electrical.deptt.permission.C2D_MESSAGE"/>
 
 
+
     <application
             android:allowBackup="true"
             android:name=".ElectricalApplication"
@@ -70,6 +71,8 @@
                 <category android:name="amu.electrical.deptt"/>
             </intent-filter>
         </receiver>
+
+        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/ic_noti_small"/>
     </application>
 
 </manifest>

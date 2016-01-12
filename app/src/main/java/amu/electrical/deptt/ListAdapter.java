@@ -133,6 +133,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         }
         final RelativeLayout hidden = (RelativeLayout) ah.card.findViewById(R.id.hidden);
         ah.fab.setImageResource(hidden.isShown() ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down);
+		ah.fab.setOnLongClickListener(new View.OnLongClickListener(){
+
+				@Override
+				public boolean onLongClick(View p1)
+				{
+					// TODO: Implement this method
+					Intent i = new Intent(context, DetailActivity.class);
+					i.putExtra(DetailActivity.EXTRA_NAME, "About Department");
+					context.startActivity(i);
+					return false;
+				}
+				
+			
+		});
         ah.fab.setOnClickListener(new View.OnClickListener() {
 
             @Override

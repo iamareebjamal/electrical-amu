@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ElectricalAMU</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Electrical AMU</string>
     <string name="about_department">The Department of Electricity was established in 1962 to manages over all electrical
         infrastructure of the Aligarh Muslim University, Aligarh. The Department is managing complete electrical network
         and committed to provide untreated power supply to the departments, offices, Hall of residences and Staff

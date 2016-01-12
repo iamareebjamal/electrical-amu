@@ -12,11 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.parse.ParseAnalytics;
+import amu.electrical.deptt.fragment.HomeFragment;
+import amu.electrical.deptt.fragment.FacultyFragment;
+import amu.electrical.deptt.fragment.MessageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private HomeFragment hf;
+	private MessageFragment mf;
     private FacultyFragment ff;
     private int NAV_SLIDE_DELAY = 250;
 
@@ -45,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (hf == null)
             hf = new HomeFragment();
-        navView.getMenu().getItem(0).setChecked(true);
+			
+        MenuItem home = navView.getMenu().getItem(0);
+		prevItem = home.getItemId();
+		home.setChecked(true);
         ft.replace(R.id.rootframe, hf);
         ft.commit();
     }
@@ -88,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpNavView(NavigationView navView) {
+	int prevItem;
+    private void setUpNavView(final NavigationView navView) {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -103,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 mItem.setChecked(true);
+								prevItem = mItem.getItemId();
                                 if (hf == null) {
                                     hf = new HomeFragment();
                                 } else {
@@ -114,11 +123,29 @@ public class MainActivity extends AppCompatActivity {
                         }, 0);
 
                         break;
+					case R.id.nav_messages:
+                        new Handler().postDelayed(new Runnable() {
+								@Override
+								public void run() {
+									mItem.setChecked(true);
+									prevItem = mItem.getItemId();
+									if (mf == null) {
+										mf = new MessageFragment();
+									} else {
+										closeNavDrawer();
+									}
+									ft.replace(R.id.rootframe, mf);
+									ft.commit();
+								}
+							}, 0);
+
+                        break;
                     case R.id.nav_faculty:
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 mItem.setChecked(true);
+								prevItem = mItem.getItemId();
                                 if (ff == null) {
                                     ff = new FacultyFragment();
                                 } else {
@@ -142,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(i);
                             }
                         }, NAV_SLIDE_DELAY);
+						//navView.getMenu().getItem(prevItem).setChecked(true);
 
                         break;
                     default:

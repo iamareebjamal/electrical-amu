@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android=" http://schemas.android.com/apk/res/android" android:opacity="opaque">
-	<!-- The background color, preferably the same as your
-	normal theme -->
-	<item android:drawable="@android:color/white"/>
-	<!-- Your product logo - 144dp color version of your app icon
-	-->
-	<item>
-		<bitmap
-			android:src="@drawable/spark"
-			android:gravity="center"/>
-	</item>
+<layer-list
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:opacity="opaque">
+    <item android:drawable="@android:color/white"/>
+    <item android:bottom="@dimen/launchscreens_product_logo_bottom">
+        <bitmap
+                android:gravity="center"
+                android:src="@drawable/spark_color_144dp"/>
+    </item>
+    <item android:bottom="@dimen/launchscreens_google_logo_bottom">
+        <bitmap
+                android:gravity="bottom|center"
+                android:src="@drawable/sparklogo_dark20"/>
+    </item>
 </layer-list>

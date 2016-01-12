@@ -37,37 +37,13 @@ class FacultyMember {
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
+    public final int COLORS[] = {R.color.indigo, R.color.orange, R.color.blue_grey, R.color.purple, R.color.cyan};
     private final int FACULTY = 0, HEADER = 1;
-    public final int COLORS[] = {R.color.indigo, R.color.orange, R.color.bluegray, R.color.purple, R.color.cyan};
-    private int colorCount = 0;
-
     RotateAnimation ranim;
+    private int colorCount = 0;
     private List<Object> members;
     private Context context;
     private int lastPosition = -1;
-
-    public class PlaceHolder extends RecyclerView.ViewHolder {
-        protected TextView name;
-        protected TextView designation;
-        protected TextView resposibility;
-        protected TextView mobile;
-        protected TextView intext;
-        protected FloatingActionButton fab;
-        protected FloatingActionButton call_fab;
-        protected CardView card;
-
-        public PlaceHolder(View v) {
-            super(v);
-            name = (TextView) v.findViewById(R.id.title);
-            designation = (TextView) v.findViewById(R.id.designation);
-            resposibility = (TextView) v.findViewById(R.id.responsibility);
-            mobile = (TextView) v.findViewById(R.id.mobNo);
-            intext = (TextView) v.findViewById(R.id.intExt);
-            fab = (FloatingActionButton) v.findViewById(R.id.more);
-            call_fab = (FloatingActionButton) v.findViewById(R.id.call);
-            card = (CardView) v;
-        }
-    }
 
     public ListAdapter(Context ctx, List<Object> list) {
         //lastPosition=-1;
@@ -85,7 +61,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         return new PlaceHolder(itemView);
     }
 
-    private void normalBindViewHolder(final ListAdapter.PlaceHolder ah, FacultyMember a){
+    private void normalBindViewHolder(final ListAdapter.PlaceHolder ah, FacultyMember a) {
 
         showAllViews(ah);
         ah.name.setGravity(Gravity.LEFT);
@@ -104,16 +80,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
             @Override
             public void onClick(View view) {
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:"+ah.mobile.getText()));
-                try{
+                callIntent.setData(Uri.parse("tel:" + ah.mobile.getText()));
+                try {
                     context.startActivity(callIntent);
-                } catch (ActivityNotFoundException e){
+                } catch (ActivityNotFoundException e) {
                     Toast.makeText(context, "No Dialer found", Toast.LENGTH_LONG).show();
                 }
             }
         };
 
-        if(!ah.mobile.equals("")){
+        if (!ah.mobile.equals("")) {
             ah.call_fab.setVisibility(View.VISIBLE);
             ah.mobile.setText(a.mobile);
             ah.call_fab.setOnClickListener(callClick);
@@ -133,20 +109,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         }
         final RelativeLayout hidden = (RelativeLayout) ah.card.findViewById(R.id.hidden);
         ah.fab.setImageResource(hidden.isShown() ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down);
-		ah.fab.setOnLongClickListener(new View.OnLongClickListener(){
+        ah.fab.setOnLongClickListener(new View.OnLongClickListener() {
 
-				@Override
-				public boolean onLongClick(View p1)
-				{
-					// TODO: Implement this method
-					Intent i = new Intent(context, DetailActivity.class);
-					i.putExtra(DetailActivity.EXTRA_NAME, "About Department");
-					context.startActivity(i);
-					return false;
-				}
-				
-			
-		});
+            @Override
+            public boolean onLongClick(View p1) {
+                // TODO: Implement this method
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra(DetailActivity.EXTRA_NAME, "About Department");
+                context.startActivity(i);
+                return false;
+            }
+
+
+        });
         ah.fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -161,24 +136,24 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         });
     }
 
-    private void headerBindViewHolder(ListAdapter.PlaceHolder p, String name){
+    private void headerBindViewHolder(ListAdapter.PlaceHolder p, String name) {
         hideAllViews(p);
         p.name.setGravity(Gravity.CENTER);
         p.name.setTextColor(context.getResources().getColor(R.color.text_dark));
         p.name.setText(name);
         p.card.setCardBackgroundColor(context.getResources().getColor(COLORS[colorCount++]));
 
-        if(colorCount==COLORS.length)
-            colorCount=0;
+        if (colorCount == COLORS.length)
+            colorCount = 0;
     }
 
-    private void hideAllViews(ListAdapter.PlaceHolder p){
+    private void hideAllViews(ListAdapter.PlaceHolder p) {
         p.designation.setVisibility(View.GONE);
         p.resposibility.setVisibility(View.GONE);
         p.fab.setVisibility(View.GONE);
     }
 
-    private void showAllViews(ListAdapter.PlaceHolder p){
+    private void showAllViews(ListAdapter.PlaceHolder p) {
         p.designation.setVisibility(View.VISIBLE);
         p.resposibility.setVisibility(View.VISIBLE);
         p.fab.setVisibility(View.VISIBLE);
@@ -196,7 +171,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     @Override
     public void onBindViewHolder(ListAdapter.PlaceHolder ah, int i) {
-        switch (ah.getItemViewType()){
+        switch (ah.getItemViewType()) {
             case FACULTY:
                 FacultyMember a = (FacultyMember) members.get(i);
                 normalBindViewHolder(ah, a);
@@ -242,6 +217,29 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
     @Override
     public long getItemId(final int position) {
         return getItemId(position);
+    }
+
+    public class PlaceHolder extends RecyclerView.ViewHolder {
+        protected TextView name;
+        protected TextView designation;
+        protected TextView resposibility;
+        protected TextView mobile;
+        protected TextView intext;
+        protected FloatingActionButton fab;
+        protected FloatingActionButton call_fab;
+        protected CardView card;
+
+        public PlaceHolder(View v) {
+            super(v);
+            name = (TextView) v.findViewById(R.id.title);
+            designation = (TextView) v.findViewById(R.id.designation);
+            resposibility = (TextView) v.findViewById(R.id.responsibility);
+            mobile = (TextView) v.findViewById(R.id.mobNo);
+            intext = (TextView) v.findViewById(R.id.intExt);
+            fab = (FloatingActionButton) v.findViewById(R.id.more);
+            call_fab = (FloatingActionButton) v.findViewById(R.id.call);
+            card = (CardView) v;
+        }
     }
 
 

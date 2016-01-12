@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:gravity="center"
-	android:orientation="vertical">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-	<ImageView
-		android:layout_height="144dp"
-		android:layout_width="144dp"
-		android:src="@drawable/spark"/>
+    <ImageView
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            android:src="@drawable/spark_color_144dp"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"/>
 
-	<TextView
-		android:layout_height="wrap_content"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_width="wrap_content"
-		android:text="Welcome to Spark"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Welcome to"
+            android:id="@+id/textView"
+            android:textColor="@color/blue_grey"
+            android:textSize="22sp"
+            android:layout_above="@+id/imageView"
+            android:layout_alignRight="@+id/imageView2"
+            android:layout_alignEnd="@+id/imageView2"/>
 
-</LinearLayout>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/sparklogo_dark20"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="The Official Android Application of\nElectrical Department, AMU"
+            android:id="@+id/textView2"
+            android:textColor="#555555"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>
 

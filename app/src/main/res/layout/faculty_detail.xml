@@ -21,7 +21,7 @@
             app:fabSize="mini"
             app:backgroundTint="@color/pink_500"
             android:clickable="true"
-    />
+            />
 
     <TextView
             android:layout_height="wrap_content"

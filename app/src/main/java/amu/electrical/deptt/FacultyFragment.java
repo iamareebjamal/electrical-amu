@@ -36,12 +36,12 @@ public class FacultyFragment extends Fragment {
         setScrollBehavior(fab);
         return v;
     }
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		((MainActivity)getActivity()).closeNavDrawer();
-	}
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).closeNavDrawer();
+    }
 
     @TargetApi(14)
     private void setScrollBehavior(final FloatingActionButton fab) {

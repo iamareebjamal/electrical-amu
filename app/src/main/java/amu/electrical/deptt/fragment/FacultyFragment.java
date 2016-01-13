@@ -1,8 +1,13 @@
 package amu.electrical.deptt.fragment;
 
+import amu.electrical.deptt.MainActivity;
+import amu.electrical.deptt.R;
+import amu.electrical.deptt.utils.FacultyMember;
+import amu.electrical.deptt.utils.ListAdapter;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -15,11 +20,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import amu.electrical.deptt.utils.ListAdapter;
-import amu.electrical.deptt.utils.FacultyMember;
-import amu.electrical.deptt.R;
-import amu.electrical.deptt.MainActivity;
-import android.os.*;
 
 
 public class FacultyFragment extends Fragment {
@@ -46,17 +46,16 @@ public class FacultyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-		new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
 
-				@Override
-				public void run()
-				{
-					// TODO: Implement this method
-					((MainActivity) getActivity()).closeNavDrawer();
-				}
-				
-		}, 0);
-   }
+            @Override
+            public void run() {
+                // TODO: Implement this method
+                ((MainActivity) getActivity()).closeNavDrawer();
+            }
+
+        }, 0);
+    }
 
     @TargetApi(14)
     private void setScrollBehavior(final FloatingActionButton fab) {

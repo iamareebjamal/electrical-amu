@@ -1,13 +1,13 @@
 package amu.electrical.deptt.fragment;
 
+import amu.electrical.deptt.MainActivity;
+import amu.electrical.deptt.R;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import amu.electrical.deptt.R;
-import amu.electrical.deptt.MainActivity;
-import android.os.Handler;
 
 public class HomeFragment extends Fragment {
     @Override
@@ -21,15 +21,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
 
-				@Override
-				public void run()
-				{
-					// TODO: Implement this method
-					((MainActivity) getActivity()).closeNavDrawer();
-				}
+            @Override
+            public void run() {
+                // TODO: Implement this method
+                ((MainActivity) getActivity()).closeNavDrawer();
+            }
 
-			}, 0);
+        }, 0);
     }
 }

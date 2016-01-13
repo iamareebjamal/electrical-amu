@@ -1,5 +1,7 @@
 package amu.electrical.deptt.utils;
 
+import amu.electrical.deptt.DetailActivity;
+import amu.electrical.deptt.R;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-import amu.electrical.deptt.DetailActivity;
-import amu.electrical.deptt.R;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 

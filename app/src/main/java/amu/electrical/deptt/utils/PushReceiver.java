@@ -20,14 +20,19 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
 	
 	@Override
     protected void onPushReceive(Context context, Intent intent) {
-        super.onPushReceive(context, intent);
+        //super.onPushReceive(context, intent);
         if (intent == null)
             return;
+			
         try {
             JSONObject json = new JSONObject(intent.getExtras().getString("com.parse.Data"));
-            
-            parseIntent = intent;
-            parsePushJson(context, json);
+			if(json.has("alert")){
+				String message = json.getString("alert");
+				showNotificationMessage(context, "New Notification", message, intent);
+			} else{
+				parseIntent = intent;
+				parsePushJson(context, json);
+			}
         } catch (JSONException e) {
             Log.e(TAG, "Push message json exception: " + e.getMessage());
         }
@@ -36,6 +41,7 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
 	private void parsePushJson(Context context, JSONObject json){
 		// TODO: Implement this method
 		try {
+			//Custom JSON
             boolean isBackground = json.getBoolean("is_background");
             JSONObject data = json.getJSONObject("data");
             String title = data.getString("title");
@@ -45,8 +51,8 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
 				showNotificationMessage(context, title, message, resultIntent);
             }
         } catch (JSONException e) {
-            Log.e(TAG, "Push message json exception: " + e.getMessage());
-        }
+			Log.e(TAG, "Push message json exception: " + e.getMessage() + "\nActual Json data:\n" + json.toString());
+       }
 	}
 
 	private NotificationUtils notificationUtils;

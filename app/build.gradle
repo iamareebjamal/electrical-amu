@@ -18,6 +18,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    /* Don't forget to turn off TEST notifications in PushReceiver before release */
     defaultConfig {
         applicationId "amu.electrical.deptt"
         minSdkVersion 9

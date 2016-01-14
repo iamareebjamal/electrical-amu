@@ -18,16 +18,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="192dp"
-              android:background="?attr/colorPrimaryDark"
+              android:background="@drawable/header"
               android:padding="16dp"
               android:theme="@style/ThemeOverlay.AppCompat.Dark"
               android:orientation="vertical"
               android:gravity="bottom">
 
+
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center"
+            android:src="@drawable/spark"/>
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="Electrical Department, AMU"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
 </LinearLayout>

@@ -3,12 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:opacity="opaque">
     <item android:drawable="@android:color/white"/>
-    <item android:bottom="@dimen/launchscreens_product_logo_bottom">
+    <item android:bottom="@dimen/launchscreens_product_bottom">
         <bitmap
                 android:gravity="center"
                 android:src="@drawable/spark_color_144dp"/>
     </item>
-    <item android:bottom="@dimen/launchscreens_google_logo_bottom">
+    <item android:bottom="@dimen/launchscreens_logo_bottom">
         <bitmap
                 android:gravity="bottom|center"
                 android:src="@drawable/sparklogo_dark20"/>

@@ -44,6 +44,7 @@ public class MessageManager {
             FileOutputStream fos = context.openFileOutput(name, Context.MODE_PRIVATE);
             ObjectOutputStream o = new ObjectOutputStream(fos);
             o.writeObject(messageDump);
+            Log.d(MessageDump.TAG, "Messages saved");
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,6 +62,7 @@ public class MessageManager {
 
     public void clear() {
         messageDump = new MessageDump();
+        Log.d(MessageDump.TAG, "Messages cleared");
         saveMessages();
     }
 

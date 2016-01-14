@@ -21,11 +21,4 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
-    <style name="AppTheme.Launcher" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
-        <item name="colorPrimaryDark">@color/quantum_grey</item>
-        <item name="android:windowBackground">@drawable/launch_screen</item>
-    </style>
-
 </resources>

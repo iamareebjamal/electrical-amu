@@ -53,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(R.drawable.cheese_1).centerCrop().into(imageView);
+        Glide.with(this).load(R.drawable.deptt).centerCrop().into(imageView);
     }
 
     @Override

@@ -3,13 +3,14 @@
     <color name="pink_500">#E91E63</color>
     <color name="green_main">#8bc34a</color>
     <color name="green_dark">#689f38</color>
+    <color name="orange">#EF6C00</color>
     <color name="orange_accent">#ff9800</color>
-    <color name="text_light">#343434</color>
-    <color name="text_dark">#eeeeee</color>
+    <color name="purple">#651FFF</color>
     <color name="indigo">#304FFE</color>
     <color name="cyan">#00B8D4</color>
-    <color name="orange">#EF6C00</color>
-    <color name="blue_grey">#37474F</color>
-    <color name="purple">#651FFF</color>
+    <color name="light_grey">#E0E0E0</color>
     <color name="quantum_grey">#ff9e9e9e</color>
+    <color name="blue_grey">#37474F</color>
+    <color name="text_light">#343434</color>
+    <color name="text_dark">#eeeeee</color>
 </resources>

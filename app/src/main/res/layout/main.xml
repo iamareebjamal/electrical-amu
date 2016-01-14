@@ -58,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
+            app:theme="@style/Base.Theme.Nav"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/drawer_view"/>
 

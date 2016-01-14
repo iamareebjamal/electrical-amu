@@ -16,10 +16,5 @@
   -->
 
 <resources>
-    <dimen name="detail_backdrop_height">256dp</dimen>
-    <dimen name="card_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="list_item_avatar_size">40dp</dimen>
-    <dimen name="launchscreens_logo_bottom">48.0dip</dimen>
-    <dimen name="launchscreens_product_bottom">16.0dip</dimen>
+    <dimen name="launchscreens_logo_bottom">100.0dip</dimen>
 </resources>

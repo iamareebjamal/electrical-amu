@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 
 public class FacultyFragment extends Fragment {
-    RecyclerView rv;
     ArrayList list;
     ListAdapter mAdapter;
     private int level = 0;
@@ -33,13 +32,13 @@ public class FacultyFragment extends Fragment {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_faculty, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Faculty");
-        rv = (RecyclerView) v.findViewById(R.id.recycler1);
+        RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
         setupRecyclerView(rv);
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
 
         fab.hide();
-        setScrollBehavior(fab);
+        setScrollBehavior(fab, rv);
         return v;
     }
 
@@ -58,7 +57,7 @@ public class FacultyFragment extends Fragment {
     }
 
     @TargetApi(14)
-    private void setScrollBehavior(final FloatingActionButton fab) {
+    private void setScrollBehavior(final FloatingActionButton fab, final RecyclerView rv) {
 
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
 

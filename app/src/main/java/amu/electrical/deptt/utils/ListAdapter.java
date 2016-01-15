@@ -177,7 +177,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         lastPosition = -1;
     }
 
-    private void setAnimation(CardView viewToAnimate, int position) {
+    private void setAnimation(View viewToAnimate, int position) {
         // If the bound view wasn't previously displayed on screen, it's animated
         if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);

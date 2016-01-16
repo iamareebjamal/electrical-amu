@@ -9,9 +9,6 @@ import android.view.View;
 
 public class FABBehaviour extends FloatingActionButton.Behavior {
 
-    //private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
-    //private boolean mIsAnimatingOut = false;
-
     public FABBehaviour(Context context, AttributeSet attrs) {
         super();
     }
@@ -25,11 +22,11 @@ public class FABBehaviour extends FloatingActionButton.Behavior {
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-        child.hide();
+
         if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
             child.hide();
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
-            child.hide();
+            child.show();
         }
 
     }

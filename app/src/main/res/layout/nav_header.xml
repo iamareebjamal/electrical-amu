@@ -15,14 +15,15 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="192dp"
-              android:background="@drawable/header"
-              android:padding="16dp"
-              android:theme="@style/ThemeOverlay.AppCompat.Dark"
-              android:orientation="vertical"
-              android:gravity="bottom">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:background="@drawable/header"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:orientation="vertical"
+        android:gravity="bottom">
 
 
     <ImageView
@@ -31,7 +32,7 @@
             android:id="@+id/imageView3"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-			android:background="@drawable/circle"
+            android:background="@drawable/circle"
             android:src="@drawable/spark"/>
 
     <TextView

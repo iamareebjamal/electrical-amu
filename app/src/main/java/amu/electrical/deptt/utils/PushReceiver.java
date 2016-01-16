@@ -5,7 +5,6 @@ import amu.electrical.deptt.messages.Message;
 import amu.electrical.deptt.messages.MessageManager;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.Settings;
 import android.util.Log;
 import com.parse.ParsePushBroadcastReceiver;
 import org.json.JSONException;
@@ -56,11 +55,13 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
             try {
                 boolean isTest = json.getBoolean("is_test");
 
-                if(isTest)Log.d(TAG, "Test Notification Received.\tSHOW_TEST : " + SHOW_TESTS);
-                if(isTest&&!SHOW_TESTS)
+                if (isTest) Log.d(TAG, "Test Notification Received.\tSHOW_TEST : " + SHOW_TESTS);
+                if (isTest && !SHOW_TESTS)
                     return;
 
-            } catch (JSONException e) { Log.e(TAG, "is_test field not found"); }
+            } catch (JSONException e) {
+                Log.e(TAG, "is_test field not found");
+            }
 
             JSONObject data = json.getJSONObject("data");
             String title = data.getString("title");
@@ -68,7 +69,10 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
             if (!isBackground) {
                 Intent resultIntent = new Intent(context, MainActivity.class);
                 resultIntent.putExtras(parseIntent.getExtras());
-                showNotificationMessage(context, title, message, resultIntent);
+
+                Message receivedMessage = new Message(resultIntent, title, message, System.currentTimeMillis());
+                showNotificationMessage(context, receivedMessage.getTitle(), receivedMessage.getMessage(), resultIntent);
+                messageManager.saveMessage(receivedMessage);
             }
         } catch (JSONException e) {
             Log.e(TAG, "Push message json exception: " + e.getMessage() + "\nActual Json data:\n" + json.toString());
@@ -81,8 +85,6 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         notificationUtils.showNotification(title, message, intent);
         Log.d(TAG, "Notification shown : " + message + " : " + title);
-
-        messageManager.saveMessage(new Message(intent, title, message, System.currentTimeMillis()));
     }
 
     @Override

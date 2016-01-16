@@ -1,17 +1,12 @@
 package amu.electrical.deptt.utils;
 
-import amu.electrical.deptt.DetailActivity;
 import amu.electrical.deptt.R;
 import amu.electrical.deptt.messages.Message;
-import android.content.ActivityNotFoundException;
+import amu.electrical.deptt.messages.MessageManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +16,22 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.PlaceHolder> {
 
+    /*
+    Test for ripple background
+     */
+    private TypedValue mTypedValue = new TypedValue();
+    private int mBackground;
 
-    RotateAnimation ranim;
+
     private static final int MESSAGE = 0, DATE = 1;
+    RotateAnimation ranim;
     private List<Object> members;
     private Context context;
     private int lastPosition = -1;
@@ -42,15 +43,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.PlaceHol
         ranim = (RotateAnimation) AnimationUtils.loadAnimation(context, R.anim.rotate);
         ranim.setFillEnabled(true);
         ranim.setFillAfter(true);
+        //Ripple Background Workaround
+        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
+        mBackground = mTypedValue.resourceId;
     }
 
     @Override
     public MessageAdapter.PlaceHolder onCreateViewHolder(ViewGroup viewGroup, int p2) {
         // TODO: Implement this method
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.message_detail, viewGroup, false);
+        itemView.setBackgroundResource(mBackground);
         return new PlaceHolder(itemView);
     }
-
 
 
     @Override
@@ -68,10 +72,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.PlaceHol
         Message message = (Message) members.get(i);
         mh.title.setText(message.getTitle());
         mh.message.setText(message.getMessage());
-        int hr = 1 + (int) (12*Math.random());
-        int min = (int) (60*Math.random());
-        mh.time.setText(String.valueOf(hr)+":"+String.valueOf(min)+" PM");
-        ((GradientDrawable)mh.icon.getBackground()).setColor(context.getResources().getColor(R.color.green_main));
+        Date date = new Date(message.getTimestamp());
+        mh.time.setText(new SimpleDateFormat("dd MMM hh:mm").format(date));
+        message.color = Colors.getRandomColor();
+        ((GradientDrawable) mh.icon.getBackground()).setColor(context.getResources().getColor(message.color));
+        mh.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MessageManager(context).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
+            }
+        });
         setAnimation(mh.root, i);
     }
 

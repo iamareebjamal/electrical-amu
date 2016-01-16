@@ -3,6 +3,8 @@ package amu.electrical.deptt;
 import amu.electrical.deptt.fragment.FacultyFragment;
 import amu.electrical.deptt.fragment.HomeFragment;
 import amu.electrical.deptt.fragment.MessageFragment;
+import amu.electrical.deptt.messages.Message;
+import amu.electrical.deptt.messages.MessageManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +16,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import com.parse.ParseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.rootframe, hf);
         ft.commit();
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

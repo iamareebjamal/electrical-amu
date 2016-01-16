@@ -7,7 +7,6 @@ import java.util.List;
 public class MessageDump implements Serializable {
 
     public static final String TAG = "SparkMessage";
-    public static final String MESSAGES_KEY = "messageList";
     private List<Message> messageList = new ArrayList<Message>();
 
     public MessageDump() {

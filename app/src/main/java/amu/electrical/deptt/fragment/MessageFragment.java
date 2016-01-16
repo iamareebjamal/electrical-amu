@@ -20,14 +20,24 @@ import java.util.ArrayList;
 
 public class MessageFragment extends Fragment {
 
+    private ArrayList<Message> list;
+    private MessageAdapter mAdapter;
+    private MessageManager messageManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_messages, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
+        v.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                messageManager.clear();
+                refresh();
+            }
+        });
         setupRecyclerView(rv);
-
 
         return v;
     }
@@ -37,10 +47,15 @@ public class MessageFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(rv.getContext()));
         rv.setItemAnimator(new DefaultItemAnimator());
 
-        MessageManager messageManager = new MessageManager(getContext());
-        ArrayList<Message> list = (ArrayList<Message>) messageManager.getMessageDump().getMessages();
-        MessageAdapter mAdapter = new MessageAdapter(getContext(), (ArrayList) list);
+        messageManager = new MessageManager(getContext());
+        list = (ArrayList<Message>) messageManager.getMessageDump().getMessages();
+        mAdapter = new MessageAdapter(getContext(), (ArrayList) list);
         rv.setAdapter(mAdapter);
+    }
+
+    public void refresh() {
+        list = (ArrayList<Message>) messageManager.getMessageDump().getMessages();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

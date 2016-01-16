@@ -72,6 +72,7 @@ public class MessageManager {
 
     public void saveMessage(Message m) {
         messageDump.addMessage(m);
+        Log.d(MessageDump.TAG, "Message added");
         saveMessages();
     }
 

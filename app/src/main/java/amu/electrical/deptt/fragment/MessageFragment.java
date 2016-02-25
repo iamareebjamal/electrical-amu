@@ -4,9 +4,11 @@ import amu.electrical.deptt.MainActivity;
 import amu.electrical.deptt.R;
 import amu.electrical.deptt.messages.Message;
 import amu.electrical.deptt.messages.MessageManager;
+import amu.electrical.deptt.utils.Colors;
 import amu.electrical.deptt.utils.MessageAdapter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,15 +32,18 @@ public class MessageFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_messages, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
-        v.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton)  v.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 messageManager.clear();
+                list.clear();
                 refresh();
             }
         });
+        Colors.tintFab(fab, getActivity());
         setupRecyclerView(rv);
-
+        fab.hide();
         return v;
     }
 

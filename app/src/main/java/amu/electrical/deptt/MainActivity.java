@@ -3,8 +3,6 @@ package amu.electrical.deptt;
 import amu.electrical.deptt.fragment.FacultyFragment;
 import amu.electrical.deptt.fragment.HomeFragment;
 import amu.electrical.deptt.fragment.MessageFragment;
-import amu.electrical.deptt.messages.Message;
-import amu.electrical.deptt.messages.MessageManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +14,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import com.parse.ParseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.layout_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
     protected boolean isNavDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START);
+    }
+
+    public void openNavDrawer() {
+        if (mDrawerLayout != null) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 
     public void closeNavDrawer() {

@@ -2,6 +2,7 @@ package amu.electrical.deptt.fragment;
 
 import amu.electrical.deptt.MainActivity;
 import amu.electrical.deptt.R;
+import amu.electrical.deptt.utils.Colors;
 import amu.electrical.deptt.utils.FacultyMember;
 import amu.electrical.deptt.utils.ListAdapter;
 import android.annotation.TargetApi;
@@ -31,12 +32,12 @@ public class FacultyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_faculty, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Faculty");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Staff Members");
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
         setupRecyclerView(rv);
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-
+        Colors.tintFab(fab, getActivity());
         fab.hide();
         setScrollBehavior(fab, rv);
         return v;
@@ -53,7 +54,7 @@ public class FacultyFragment extends Fragment {
                 ((MainActivity) getActivity()).closeNavDrawer();
             }
 
-        }, 0);
+        }, 100);
     }
 
     @TargetApi(14)

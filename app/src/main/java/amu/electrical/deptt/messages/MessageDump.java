@@ -26,7 +26,7 @@ public class MessageDump implements Serializable {
 
     public void addMessages(Message[] messages) {
         for (Message message : messages) {
-            messageList.add(message);
+            messageList.add(0, message);
         }
     }
 

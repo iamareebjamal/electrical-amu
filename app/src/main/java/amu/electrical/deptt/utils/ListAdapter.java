@@ -1,6 +1,5 @@
 package amu.electrical.deptt.utils;
 
-import amu.electrical.deptt.DetailActivity;
 import amu.electrical.deptt.R;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -26,7 +25,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     public final int COLORS[] = {R.color.indigo, R.color.orange, R.color.blue_grey, R.color.purple, R.color.cyan};
     private final int FACULTY = 0, HEADER = 1;
-    RotateAnimation ranim;
+    private RotateAnimation ranim;
     private int colorCount = 0;
     private List<Object> members;
     private Context context;
@@ -96,19 +95,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         }
         final RelativeLayout hidden = (RelativeLayout) ah.card.findViewById(R.id.hidden);
         ah.fab.setImageResource(hidden.isShown() ? R.drawable.ic_arrow_up : R.drawable.ic_arrow_down);
-        ah.fab.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View p1) {
-                // TODO: Implement this method
-                Intent i = new Intent(context, DetailActivity.class);
-                i.putExtra(DetailActivity.EXTRA_NAME, "About Department");
-                context.startActivity(i);
-                return false;
-            }
-
-
-        });
+        Colors.tintFab(ah.fab, context);
         ah.fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -118,7 +105,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
                 hidden.setVisibility(hidden.isShown() ? View.GONE : View.VISIBLE);
                 ah.fab.startAnimation(ranim);
                 ah.fab.setImageResource(hidden.isShown() ? R.drawable.ic_arrow_down : R.drawable.ic_arrow_up);
-
+                Colors.tintFab(ah.fab, context);
             }
         });
     }

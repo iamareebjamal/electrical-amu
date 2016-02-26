@@ -4,13 +4,41 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:scrollbars="vertical"
-            android:padding="10dp"
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+        <ImageView
+                android:id="@+id/inCharge"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/in_charge"/>
+
+        <TextView
+                android:id="@+id/inChargeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/inCharge"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/trans_dark"
+                android:text="In Charge"/>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:scrollbars="vertical"
+                android:padding="10dp"
+                android:layout_below="@+id/inChargeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+
 
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

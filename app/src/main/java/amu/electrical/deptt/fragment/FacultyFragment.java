@@ -6,18 +6,22 @@ import amu.electrical.deptt.utils.Colors;
 import amu.electrical.deptt.utils.FacultyMember;
 import amu.electrical.deptt.utils.ListAdapter;
 import android.annotation.TargetApi;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,6 +43,15 @@ public class FacultyFragment extends Fragment {
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         Colors.tintFab(fab, getActivity());
         fab.hide();
+
+        TextView inChargeText = (TextView) v.findViewById(R.id.inChargeText);
+        GradientDrawable shape = new GradientDrawable();
+        shape.setColor(ContextCompat.getColor(getContext(), R.color.green_main));
+        shape.setCornerRadius(inChargeText.getWidth()+100);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.JELLY_BEAN)
+            inChargeText.setBackground(shape);
+        else
+            inChargeText.setBackgroundDrawable(shape);
         setScrollBehavior(fab, rv);
         return v;
     }
@@ -46,7 +59,7 @@ public class FacultyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        level=0;
     }
 
     @TargetApi(14)
@@ -107,6 +120,7 @@ public class FacultyFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(rv.getContext()));
         rv.setItemAnimator(new DefaultItemAnimator());
+
 
         list = new ArrayList<Object>();
 

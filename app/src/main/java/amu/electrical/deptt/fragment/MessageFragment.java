@@ -29,7 +29,7 @@ public class MessageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
-        View v = inflater.inflate(R.layout.fragment_messages, container, false);
+        final View v = inflater.inflate(R.layout.fragment_messages, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
         FloatingActionButton fab = (FloatingActionButton)  v.findViewById(R.id.fab);
@@ -39,10 +39,22 @@ public class MessageFragment extends Fragment {
                 messageManager.clear();
                 list.clear();
                 refresh();
+                if(list.size()>0){
+                    v.findViewById(R.id.no_message).setVisibility(View.GONE);
+                } else {
+                    v.findViewById(R.id.no_message).setVisibility(View.VISIBLE);
+                }
             }
         });
         Colors.tintFab(fab, getActivity());
         setupRecyclerView(rv);
+
+        if(list.size()>0){
+            v.findViewById(R.id.no_message).setVisibility(View.GONE);
+        } else {
+            v.findViewById(R.id.no_message).setVisibility(View.VISIBLE);
+        }
+
         fab.hide();
         return v;
     }
@@ -54,6 +66,7 @@ public class MessageFragment extends Fragment {
 
         messageManager = new MessageManager(getContext());
         list = (ArrayList<Message>) messageManager.getMessageDump().getMessages();
+
         mAdapter = new MessageAdapter(getContext(), (ArrayList) list);
         rv.setAdapter(mAdapter);
     }

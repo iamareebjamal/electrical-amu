@@ -24,7 +24,7 @@
         android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_backdrop_height"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -157,7 +157,8 @@
     <android.support.design.widget.FloatingActionButton
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            app:layout_anchor="@id/appbar"
+            android:id="@+id/fab"
+            app:layout_anchor="@id/app_bar"
             app:layout_anchorGravity="bottom|right|end"
             android:src="@drawable/ic_phone"
             android:layout_margin="@dimen/fab_margin"

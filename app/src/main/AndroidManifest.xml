@@ -38,7 +38,6 @@
         </activity>
         <activity
                 android:name=".DetailActivity"
-                android:theme="@style/DetailTheme"
                 android:label="About">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

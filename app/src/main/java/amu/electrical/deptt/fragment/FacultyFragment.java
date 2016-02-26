@@ -46,15 +46,7 @@ public class FacultyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        new Handler().postDelayed(new Runnable() {
 
-            @Override
-            public void run() {
-                // TODO: Implement this method
-                ((MainActivity) getActivity()).closeNavDrawer();
-            }
-
-        }, 100);
     }
 
     @TargetApi(14)

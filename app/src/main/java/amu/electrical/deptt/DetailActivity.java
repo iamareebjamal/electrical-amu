@@ -16,38 +16,52 @@
 
 package amu.electrical.deptt;
 
+import amu.electrical.deptt.utils.Colors;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
-    public static final String EXTRA_NAME = "cheese_name";
+
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        Intent intent = getIntent();
-        final String cheeseName = intent.getStringExtra(EXTRA_NAME);
-
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setHomeButtonEnabled(true);
 
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(cheeseName);
+        collapsingToolbar = ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar));
+        collapsingToolbar.setTitle("Department");
 
+        AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
+        appBar.addOnOffsetChangedListener(this);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        Colors.tintFab(fab, this);
         loadBackdrop();
     }
 
@@ -67,4 +81,18 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    @TargetApi(11)
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M)
+            return;
+
+        if(collapsingToolbar.getHeight() + verticalOffset < 2* ViewCompat.getMinimumHeight(collapsingToolbar)){
+            appBarLayout.setSystemUiVisibility(0);
+        } else {
+            appBarLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        }
+    }
 }

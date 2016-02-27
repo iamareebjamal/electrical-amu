@@ -89,7 +89,10 @@
 
                     <TextView android:layout_width="match_parent"
                               android:layout_height="1dp"
-                              android:theme="@style/Divider"/>
+                              android:theme="@style/Divider"
+                              android:layout_marginBottom="@dimen/divider_margin"
+                              android:layout_marginTop="@dimen/divider_margin"
+                    />
 
                     <TextView
                             android:layout_width="match_parent"

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+
+    <string-array name="works_names">
+        <item>Er. Syed M Abdullah</item>
+        <item>Er. Abdul Sami</item>
+        <item>Mr. S. M. Suhail Kirmani</item>
+        <item>Mr. Mohd. Owais</item>
+        <item>Mr. Rafiq Ahamd</item>
+        <item>Mr. Najam-uz-Zaman</item>
+    </string-array>
+
+    <string-array name="works_designation">
+        <item>Assistant Electrical Engineer</item>
+        <item>Junior Engineer</item>
+        <item>Head Electrician</item>
+        <item>Head Electrician</item>
+        <item>Head Electrician</item>
+        <item>Technical Assistant</item>
+    </string-array>
+
+    <string-array name="works_responsibility">
+        <item>Overall In-Charge of the Work and Maintenance Section.</item>
+        <item>Maintenance of the newly allotted residences, Nursing Staff quarters and residential quarters of the
+            University.\nPreparation of estimate and check the estimate received from the architects and any other works
+            assigned time to time.
+        </item>
+        <item>Maintenance of the all departments, Vice-Chancellor Lodge, PVC Lodge, offices, Schools Residents, Maulana
+            Azad Library, Canteen, Hospitals, Mosque, Biat-ul-Salat, University Guest House and any other works assigned
+            time to time.
+        </item>
+        <item>Maintenance of the Administration Block, Z. H. Engineering College and Technology and responsible of the
+            repair of fans and motors.
+        </item>
+        <item>Maintenance of the Dental College, Women’s College, J. N .Medical. College and any other works assigned
+            time to time.
+        </item>
+        <item>Maintenance of the all Hall Residences and any other works assigned time to time.</item>
+    </string-array>
+
+    <string-array name="works_mobile">
+        <item>9997197808</item>
+        <item>9997228854</item>
+        <item>9410841927</item>
+        <item>9358604543</item>
+        <item>9359245762</item>
+        <item>9997147012</item>
+    </string-array>
+
+    <string-array name="works_intext">
+        <item>3744</item>
+        <item>3745</item>
+        <item>3746</item>
+        <item>3749</item>
+    </string-array>
+
+    <string-array name="supply_names">
+        <item>Er. Syed Raza Shuja Naqvi</item>
+        <item>Er. Ansarul Haque</item>
+        <item>Er. Mohd. Shamim Ansari</item>
+        <item>Mr. Mohd. Javed. Khan</item>
+    </string-array>
+
+    <string-array name="supply_designation">
+        <item>Assistant Electrical Engineer</item>
+        <item>Junior Electrical Engineer</item>
+        <item>Junior Engineer Electrical</item>
+        <item>Head Electrical Electrician</item>
+    </string-array>
+
+    <string-array name="supply_responsibility">
+        <item>Over all In-Charge of the Supply and Service Section</item>
+        <item>Estimating, Costing and Supervision of the external electrification works, Sub-Station, Overhead lines,
+            Underground cables including Street Lighting, etc and works assigned time to time
+        </item>
+        <item>To manage and maintain the works related to Meter-section, Energy and ducting correspondence and
+            persuasion of the matters related to the UPPCL/DVVNL and works assigned time to time
+        </item>
+        <item>In-charge of Store Supply Service Section</item>
+    </string-array>
+
+    <string-array name="supply_mobile">
+        <item>09410644367</item>
+        <item>09897627817</item>
+        <item>09358211129</item>
+        <item>09997147066</item>
+    </string-array>
+
+    <string-array name="office_names">
+        <item>Mr. Arshad Ali</item>
+        <item>Mr. Mohd Faraz Ashraf</item>
+        <item>Mr. Nanak Chand</item>
+        <item>Mr. Mohd Yusuf Azad</item>
+        <item>Mr. Mohd. Afroz</item>
+        <item>Mr. Mirza Obaid Beg</item>
+        <item>Mr. Islam Khan</item>
+        <item>Mr. Mohd Ahmad</item>
+        <item>Mr. Athar Ali Khan</item>
+    </string-array>
+
+    <string-array name="office_designation">
+        <item>Assistant (A/Cs)</item>
+        <item>Assistant (Admin)</item>
+        <item>UDC (Admin)</item>
+        <item>Stenographer</item>
+        <item>LDC (Admin)</item>
+        <item>LDC (Admin)</item>
+        <item>Office Attendant</item>
+        <item>Office Attendant</item>
+        <item>Office Attendant</item>
+    </string-array>
+
+    <string-array name="office_mobile">
+        <item>9690235275</item>
+        <item>9917786544</item>
+        <item>9358910806</item>
+        <item>7669601021</item>
+        <item>9027841624</item>
+        <item>9897452369</item>
+        <item>9917012908</item>
+        <item>9319827617</item>
+        <item>9286144315</item>
+    </string-array>
+
+    <string-array name="technical_names">
+        <item>Mr. Mohd. Arif</item>
+        <item>Mr. Naseem Ali</item>
+        <item>Mr. Tahir Hussain</item>
+        <item>Mr. Mohd. Zakir</item>
+        <item>Mr. Eidal Singh</item>
+        <item>Mr. Ansar Ahmad</item>
+        <item>Mr. Rizwan Ahmad</item>
+        <item>Mr. Farooq Ali</item>
+        <item>Mr. Mohd. Shoeb Khan</item>
+        <item>Mr. Mohd Nisar Ahmad</item>
+        <item>Mr. Tasdeeq Ahmad</item>
+        <item>Mr. Murad Ali</item>
+        <item>Mr. Amir Abbas</item>
+        <item>Mr. Abdul Haseeb</item>
+        <item>Mr. Shakeel Ahmad</item>
+        <item>Mr. Khaleel Ahmad</item>
+        <item>Mr. Babar</item>
+        <item>Mr. Shadman Kirmani</item>
+        <item>Mr. Sagheer Ahmad</item>
+        <item>Mr.Kamal Singh Chauhan</item>
+        <item>Mr. Mohd Rafeeq</item>
+        <item>Mr. Mohd Khursheed</item>
+        <item>Mr. Aqeel Ahmad</item>
+        <item>Mr. Vakeel Ahmad</item>
+        <item>Mr. Ali Mohd Khan</item>
+        <item>Mr. Nizamuddin</item>
+        <item>Mr. Khaleel</item>
+        <item>Mr. Mohd. Shaiban</item>
+        <item>Mr. Shujaul Islam</item>
+        <item>Mr. Ahsan Ali</item>
+        <item>Mr. Mohd. Nasir</item>
+        <item>Mr. Ahmad Kamal</item>
+        <item>Mr. Mohd Yamin</item>
+        <item>Mr. Mehboob Khan</item>
+        <item>Mr. Irshad Ali</item>
+        <item>Mr. Shahil Imtiyaz</item>
+        <item>Mr. Mohd. Sufian</item>
+        <item>Mr. Harun Ali</item>
+        <item>Mr. Mohd Hussain</item>
+        <item>Mr. Mohd Sajid Ali Khan</item>
+        <item>Mr. Vinod Kumar</item>
+    </string-array>
+
+    <string-array name="technical_designation">
+        <item>Head Wireman</item>
+        <item>Head Wireman</item>
+        <item>Head Wireman</item>
+        <item>Head Wireman</item>
+        <item>Wireman</item>
+        <item>Wireman</item>
+        <item>Wireman</item>
+        <item>Wireman</item>
+        <item>Wireman</item>
+        <item>Wireman</item>
+        <item>Asstt Wireman</item>
+        <item>Asstt Wireman</item>
+        <item>JLA</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>MTS</item>
+        <item>Hall Attendant</item>
+        <item>Safaiwala</item>
+    </string-array>
+
+    <string-array name="technical_mobile">
+        <item>9837365440</item>
+        <item>9219616445</item>
+        <item>7895932855</item>
+        <item>8533864847</item>
+        <item>9837281285</item>
+        <item>9045755740</item>
+        <item>9412819747</item>
+        <item>7669227650</item>
+        <item>9359465094</item>
+        <item></item>
+        <item>9259067274</item>
+        <item>9358890438</item>
+        <item>7895932977</item>
+        <item>9058965546</item>
+        <item>9557142163</item>
+        <item></item>
+        <item>9152900604</item>
+        <item>9456033362</item>
+        <item>9917417789</item>
+        <item></item>
+        <item>9368357249</item>
+        <item>9897817179</item>
+        <item>8057818129</item>
+        <item>9897943580</item>
+        <item></item>
+        <item>9045643269</item>
+        <item></item>
+        <item></item>
+        <item>9358492166</item>
+        <item>7895868690</item>
+        <item>9897668257</item>
+        <item>9548242163</item>
+        <item>9368550019</item>
+        <item>9557632372</item>
+        <item>9027573055</item>
+        <item>9917417789</item>
+        <item></item>
+        <item>8791689907</item>
+        <item>9917584551</item>
+        <item></item>
+        <item>8958683564</item>
+    </string-array>
+
+    <string-array name="daily_names">
+        <item>Mr. Moinuddin Ali Ahmad</item>
+        <item>Mr. S. Farman Haider</item>
+        <item>Mr. Jamaluddin</item>
+        <item>Mr. Javed Sharafat</item>
+        <item>Mr. Safiuddin</item>
+        <item>Mr. Salman</item>
+        <item>Mr. Arsad Khan</item>
+    </string-array>
+
+    <string-array name="daily_designation">
+        <item>D/W (Clerical)</item>
+        <item>D/W (Clerical)</item>
+        <item>D/W (Clerical)</item>
+        <item>D/W (Skilled)</item>
+        <item>D/W (Skilled)</item>
+        <item>D/W (Skilled)</item>
+        <item>D/W (Skilled)</item>
+
+    </string-array>
+
+    <string-array name="daily_mobile">
+        <item>9410885789</item>
+        <item>8265972171</item>
+        <item>9058537781</item>
+        <item>7417011301</item>
+        <item>7895643359</item>
+        <item>9627451777</item>
+        <item>9648945400</item>
+    </string-array>
+</resources>

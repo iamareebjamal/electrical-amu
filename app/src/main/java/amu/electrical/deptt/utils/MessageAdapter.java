@@ -23,15 +23,13 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.PlaceHolder> {
 
+    private static final int MESSAGE = 0, DATE = 1;
+    RotateAnimation ranim;
     /*
     Test for ripple background
      */
     private TypedValue mTypedValue = new TypedValue();
     private int mBackground;
-
-
-    private static final int MESSAGE = 0, DATE = 1;
-    RotateAnimation ranim;
     private List<Object> members;
     private Context context;
     private int lastPosition = -1;

@@ -61,8 +61,12 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    public void newMessage(View v){
+    //Testing
+    public void newMessage(View v) {
         new MessageManager(this).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
+        if (mf != null) {
+            mf.inserted();
+        }
     }
 
 

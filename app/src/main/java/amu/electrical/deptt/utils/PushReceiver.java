@@ -2,6 +2,7 @@ package amu.electrical.deptt.utils;
 
 import amu.electrical.deptt.MainActivity;
 import amu.electrical.deptt.messages.Message;
+import amu.electrical.deptt.messages.MessageDump;
 import amu.electrical.deptt.messages.MessageManager;
 import android.content.Context;
 import android.content.Intent;
@@ -73,6 +74,8 @@ public class PushReceiver extends ParsePushBroadcastReceiver {
                 Message receivedMessage = new Message(resultIntent, title, message, System.currentTimeMillis());
                 showNotificationMessage(context, receivedMessage.getTitle(), receivedMessage.getMessage(), resultIntent);
                 messageManager.saveMessage(receivedMessage);
+                Intent messageInserted = new Intent(MessageDump.TAG);
+                context.sendBroadcast(messageInserted);
             }
         } catch (JSONException e) {
             Log.e(TAG, "Push message json exception: " + e.getMessage() + "\nActual Json data:\n" + json.toString());

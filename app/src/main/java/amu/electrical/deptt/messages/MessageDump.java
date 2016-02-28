@@ -2,12 +2,11 @@ package amu.electrical.deptt.messages;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MessageDump implements Serializable {
 
     public static final String TAG = "SparkMessage";
-    private List<Message> messageList = new ArrayList<Message>();
+    private ArrayList<Message> messageList = new ArrayList<Message>();
 
     public MessageDump() {
     }
@@ -30,7 +29,7 @@ public class MessageDump implements Serializable {
         }
     }
 
-    public List<Message> getMessages() {
+    public ArrayList<Message> getMessages() {
         return messageList;
     }
 

@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class MessageManager {
 
@@ -74,6 +75,10 @@ public class MessageManager {
         messageDump.addMessage(m);
         Log.d(MessageDump.TAG, "Message added");
         saveMessages();
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messageDump.getMessages();
     }
 
 

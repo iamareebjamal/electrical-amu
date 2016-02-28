@@ -19,8 +19,10 @@ build/
 gradle.bat
 gradle/
 
+# Idea Files
 *.iml
 idea/
+.idea/
 
 # Local configuration file (sdk path, etc)
 local.properties

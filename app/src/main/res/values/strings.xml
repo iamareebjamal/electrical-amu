@@ -5,10 +5,16 @@
     <string name="about_department">The Department of Electricity was established in 1962 to manages over all electrical
         infrastructure of the Aligarh Muslim University, Aligarh. The Department is managing complete electrical network
         and committed to provide untreated power supply to the departments, offices, Hall of residences and Staff
-        residences at the University through its 25 sub-stations.\n\nTo enhance its services and better management of
-        electrical infrastructure the department was bifurcated in two sections in 1976.\n\nThe two sections
-        are:\nSupply Service Section\nWorks and Maintenance\nThe Supply service section manages the external
-        electrification while the internal electrification is managed by the Works and Maintenance section. The present
-        sanctioned load of the University main campus is 8500KVA and the sanctioned load of the new campus is 650KW.
+        residences at the University through its 25 sub-stations.
+    </string>
+    <string name="department_sections">
+        To enhance its services and better management of
+        electrical infrastructure the department was bifurcated in two sections in 1976.
+    </string>
+    <string name="about_sections">
+        The two sections
+        are:\n\t    \u2022 <b>Supply Service Section</b>\n\t    \u2022 <b>Works and Maintenance</b>\n\nThe Supply service section manages the external
+        electrification while the internal electrification is managed by the Works and Maintenance section.\nThe present
+        sanctioned load of the University main campus is <b><i>8500KVA</i></b> and the sanctioned load of the new campus is <b><i>650KW.</i></b>
     </string>
 </resources>

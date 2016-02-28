@@ -22,4 +22,5 @@
     <dimen name="list_item_avatar_size">40dp</dimen>
     <dimen name="launchscreens_logo_bottom">48.0dip</dimen>
     <dimen name="launchscreens_product_bottom">16.0dip</dimen>
+    <dimen name="divider_margin">3dp</dimen>
 </resources>

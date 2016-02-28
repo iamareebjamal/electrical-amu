@@ -84,8 +84,16 @@
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Info"
+                            android:text="About"
+                            android:textColor="@color/pink_material"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="1dp"
+                              android:theme="@style/Divider"
+                              android:layout_marginBottom="@dimen/divider_margin"
+                              android:layout_marginTop="@dimen/divider_margin"
+                    />
 
                     <TextView
                             android:layout_width="match_parent"
@@ -108,16 +116,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Friends"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
 
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/about_department"/>
+                            android:text="@string/department_sections"/>
 
                 </LinearLayout>
 
@@ -135,16 +139,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Related"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
 
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/about_department"/>
+                            android:text="@string/about_sections"/>
 
                 </LinearLayout>
 

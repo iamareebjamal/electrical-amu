@@ -3,14 +3,9 @@ package amu.electrical.deptt.fragment;
 import amu.electrical.deptt.MainActivity;
 import amu.electrical.deptt.R;
 import amu.electrical.deptt.messages.Message;
-import amu.electrical.deptt.messages.MessageDump;
 import amu.electrical.deptt.messages.MessageManager;
 import amu.electrical.deptt.utils.Colors;
 import amu.electrical.deptt.utils.MessageAdapter;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +25,7 @@ public class MessageFragment extends Fragment {
     private ArrayList<Message> list;
     private MessageAdapter mAdapter;
     private MessageManager messageManager;
-    BroadcastReceiver messageInsert = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(MessageDump.TAG)) {
-                inserted();
-                Log.d("Broadcast", "Received");
-            }
-        }
-    };
+
     private FloatingActionButton fab;
     private View v;
 
@@ -62,7 +48,6 @@ public class MessageFragment extends Fragment {
         setupRecyclerView(rv);
         init();
 
-        getActivity().registerReceiver(messageInsert, new IntentFilter(MessageDump.TAG));
         return v;
     }
 

@@ -4,8 +4,12 @@ import amu.electrical.deptt.fragment.FacultyFragment;
 import amu.electrical.deptt.fragment.HomeFragment;
 import amu.electrical.deptt.fragment.MessageFragment;
 import amu.electrical.deptt.messages.Message;
+import amu.electrical.deptt.messages.MessageDump;
 import amu.electrical.deptt.messages.MessageManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -15,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import com.parse.ParseAnalytics;
@@ -25,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private HomeFragment hf;
     private MessageFragment mf;
+    BroadcastReceiver messageInsert = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(MessageDump.TAG)) {
+                refreshMessages();
+                Log.d("Broadcast", "Received");
+            }
+        }
+    };
     private FacultyFragment ff;
     private int NAV_SLIDE_DELAY = 250;
 
@@ -38,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ParseAnalytics.trackAppOpened(getIntent());
+        registerReceiver(messageInsert, new IntentFilter(MessageDump.TAG));
 
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -64,8 +79,19 @@ public class MainActivity extends AppCompatActivity {
     //Testing
     public void newMessage(View v) {
         new MessageManager(this).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
+        Intent messageInserted = new Intent(MessageDump.TAG);
+        sendBroadcast(messageInserted);
         if (mf != null) {
             mf.inserted();
+        }
+    }
+
+    private void refreshMessages() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (mf != null) {
+            mf = new MessageFragment();
+            ft.replace(R.id.rootframe, mf);
+            ft.commit();
         }
     }
 

@@ -17,7 +17,7 @@
     <color name="blue_grey">#37474F</color>
     <color name="trans_dark">#77000000</color>
     <color name="trans_light">#11000000</color>
+    <color name="trans_white">#77ffffff</color>
     <color name="text_light">#343434</color>
     <color name="text_dark">#eeeeee</color>
-    <color name="pink_material">#E91E63</color>
 </resources>

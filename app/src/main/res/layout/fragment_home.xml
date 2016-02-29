@@ -14,8 +14,8 @@
             android:orientation="vertical">
 
         <ImageView
-                android:layout_height="200dp"
-                android:layout_width="200dp"
+                android:layout_height="180dp"
+                android:layout_width="180dp"
                 android:src="@drawable/spark_color_144dp"
                 android:id="@+id/imageView"
                 android:layout_centerVertical="true"

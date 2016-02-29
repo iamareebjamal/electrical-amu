@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(MessageDump.TAG)) {
                 refreshMessages();
-                Log.d("Broadcast", "Received");
+                Log.d(MessageDump.TAG, "Broadcast Received");
             }
         }
     };

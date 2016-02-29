@@ -20,6 +20,6 @@ public class Colors {
     }
 
     public static void tintFab(FloatingActionButton fab, Context context) {
-        DrawableCompat.setTint(fab.getDrawable(), ContextCompat.getColor(context, R.color.trans_dark));
+        DrawableCompat.setTint(fab.getDrawable(), ContextCompat.getColor(context, R.color.text_dark));
     }
 }

@@ -9,6 +9,7 @@ import amu.electrical.deptt.utils.MessageAdapter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,13 @@ public class MessageFragment extends Fragment {
                 clear();
             }
         });
+        fab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(getContext(), "Clear Messages", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         Colors.tintFab(fab, getActivity());
         setupRecyclerView(rv);
@@ -64,9 +73,23 @@ public class MessageFragment extends Fragment {
     }
 
     public void clear() {
+        final ArrayList<Message> temp = (ArrayList<Message>) list.clone();
         messageManager.clear();
         list.clear();
         mAdapter.notifyDataSetChanged();
+        Snackbar sb = Snackbar.make(v, temp.size() + " messages deleted", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        for (Message m : temp) {
+                            list.add(list.size(), m);
+                            messageManager.saveMessage(m);
+                            mAdapter.notifyItemInserted(list.size());
+                        }
+                        init();
+                    }
+                });
+        sb.show();
         init();
     }
 

@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    //Testing
+    //Testing - Delete
     public void newMessage(View v) {
         new MessageManager(this).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
         Intent messageInserted = new Intent(MessageDump.TAG);

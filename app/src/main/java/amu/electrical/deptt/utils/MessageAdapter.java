@@ -2,7 +2,6 @@ package amu.electrical.deptt.utils;
 
 import amu.electrical.deptt.R;
 import amu.electrical.deptt.messages.Message;
-import amu.electrical.deptt.messages.MessageManager;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -71,15 +70,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.PlaceHol
         mh.title.setText(message.getTitle());
         mh.message.setText(message.getMessage());
         Date date = new Date(message.getTimestamp());
-        mh.time.setText(new SimpleDateFormat("dd MMM hh:mm").format(date));
+        mh.time.setText(new SimpleDateFormat("dd MMM h:mm a").format(date));
         message.color = Colors.getRandomColor();
         ((GradientDrawable) mh.icon.getBackground()).setColor(context.getResources().getColor(message.color));
-        mh.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MessageManager(context).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
-            }
-        });
+
         setAnimation(mh.root, i);
     }
 

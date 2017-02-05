@@ -87,8 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (navView != null)
-            setUpNavView(navView);
+        setUpNavView(navView);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -141,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(final MenuItem mItem) {
-                // TODO: Implement this method
                 int id = mItem.getItemId();
                 final FragmentTransaction ft = getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 switch (id) {

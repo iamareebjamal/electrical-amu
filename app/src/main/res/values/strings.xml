@@ -22,4 +22,16 @@
     <string name="department">Electricity, AMU</string>
     <string name="in_charge">Dr. Mohd Rihan, In Charge</string>
     <string name="in_charge_phone">+91&#8211;9219605655</string>
+
+    <string name="department_nav">Department</string>
+    <string name="about">About</string>
+    <string name="title">Title</string>
+    <string name="designation">Designation</string>
+    <string name="responsibility">Responsibility</string>
+    <string name="intext">Int. Ext.</string>
+    <string name="no_new_messages">No new Messages</string>
+    <string name="home">Home</string>
+    <string name="notifications">Notifications</string>
+    <string name="staff_members">Staff Members</string>
+    <string name="message">Message</string>
 </resources>

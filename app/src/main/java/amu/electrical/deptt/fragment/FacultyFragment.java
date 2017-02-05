@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,7 +42,6 @@ public class FacultyFragment extends Fragment {
     private ArrayList list;
     private ListAdapter mAdapter;
     private FacultyAll faculty;
-    private int level = 0;
 
     private ProgressDialog progressDialog;
 
@@ -49,7 +49,9 @@ public class FacultyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_faculty, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Staff Members");
+        ActionBar ab = ((MainActivity) getActivity()).getSupportActionBar();
+        if(ab != null)
+            ab.setTitle("Staff Members");
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading...");
@@ -133,7 +135,6 @@ public class FacultyFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        level = 0;
     }
 
     @TargetApi(14)

@@ -40,8 +40,6 @@ import amu.electrical.deptt.utils.Colors;
 
 public class DetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
-
-    private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbar;
 
     @Override
@@ -49,7 +47,7 @@ public class DetailActivity extends AppCompatActivity implements AppBarLayout.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {

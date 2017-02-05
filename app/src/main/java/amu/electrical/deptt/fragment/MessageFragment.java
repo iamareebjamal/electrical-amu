@@ -4,6 +4,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import amu.electrical.deptt.MainActivity;
 import amu.electrical.deptt.R;
@@ -31,7 +33,8 @@ public class MessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_messages, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Notifications");
+        ActionBar ab = ((MainActivity) getActivity()).getSupportActionBar();
+        if(ab != null) ab.setTitle("Notifications");
         RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
 
         View emptyLayout = v.findViewById(R.id.no_message);
@@ -58,7 +61,7 @@ public class MessageFragment extends Fragment {
                 viewHolder.title.setText(model.getTitle());
                 viewHolder.message.setText(model.getBody());
                 Date date = new Date(model.getTime());
-                viewHolder.time.setText(new SimpleDateFormat("dd MMM h:mm a").format(date));
+                viewHolder.time.setText(new SimpleDateFormat("dd MMM h:mm a", Locale.getDefault()).format(date));
                 ((GradientDrawable) viewHolder.icon.getBackground()).setColor(getActivity().getResources().getColor(Colors.getRandomColor()));
 
             }

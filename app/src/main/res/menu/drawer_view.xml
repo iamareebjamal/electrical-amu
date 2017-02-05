@@ -19,19 +19,19 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_dashboard"
-            android:title="Home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/ic_notifications"
-            android:title="Notifications" />
+            android:title="@string/notifications" />
         <item
             android:id="@+id/nav_faculty"
             android:icon="@drawable/ic_faculty"
-            android:title="Staff Members" />
+            android:title="@string/staff_members" />
         <item
             android:id="@+id/nav_department"
             android:icon="@drawable/ic_department"
-            android:title="Department" />
+            android:title="@string/department_nav" />
     </group>
 
     <!--   discuss - Feedback

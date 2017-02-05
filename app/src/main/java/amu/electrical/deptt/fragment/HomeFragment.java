@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,11 @@ import amu.electrical.deptt.utils.Colors;
 public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Home");
+        ActionBar ab = ((MainActivity) getActivity()).getSupportActionBar();
+        if(ab != null)
+            ab.setTitle(getString(R.string.home));
         Colors.tintFab(fab, getActivity());
         RotateAnimation ranim = (RotateAnimation) AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_90);
         ranim.setFillEnabled(true);

@@ -25,7 +25,7 @@ import amu.electrical.deptt.model.FacultyMember;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
-    public final int COLORS[] = {R.color.indigo, R.color.orange, R.color.blue_grey, R.color.purple, R.color.cyan};
+    private final int COLORS[] = {R.color.indigo, R.color.orange, R.color.blue_grey, R.color.purple, R.color.cyan};
     private final int FACULTY = 0, HEADER = 1;
     private RotateAnimation ranim;
     private int colorCount = 0;
@@ -34,7 +34,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
     private int lastPosition = -1;
 
     public ListAdapter(Context ctx, List<Object> list) {
-        //lastPosition=-1;
         members = list;
         context = ctx;
         ranim = (RotateAnimation) AnimationUtils.loadAnimation(context, R.anim.rotate);
@@ -44,7 +43,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     @Override
     public ListAdapter.PlaceHolder onCreateViewHolder(ViewGroup viewGroup, int p2) {
-        // TODO: Implement this method
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.faculty_card, viewGroup, false);
         return new PlaceHolder(itemView);
     }
@@ -77,7 +75,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
             }
         };
 
-        if (!ah.mobile.equals("")) {
+        if (!a.mobile.equals("")) {
             ah.call_fab.setVisibility(View.VISIBLE);
             ah.mobile.setText(a.mobile);
             ah.call_fab.setOnClickListener(callClick);
@@ -102,7 +100,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
 
                 hidden.setVisibility(hidden.isShown() ? View.GONE : View.VISIBLE);
                 ah.fab.startAnimation(ranim);
@@ -162,10 +159,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         setAnimation(ah.card, i);
     }
 
-    public void resetAnimation() {
-        lastPosition = -1;
-    }
-
     private void setAnimation(View viewToAnimate, int position) {
         // If the bound view wasn't previously displayed on screen, it's animated
         if (position > lastPosition) {
@@ -178,9 +171,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     @Override
     public void onViewDetachedFromWindow(ListAdapter.PlaceHolder holder) {
-        // TODO: Implement this method
         holder.card.clearAnimation();
-        //lastPosition=-1;
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -192,10 +183,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     @Override
     public long getItemId(final int position) {
-        return getItemId(position);
+        return members.get(position).hashCode();
     }
 
-    public class PlaceHolder extends RecyclerView.ViewHolder {
+    class PlaceHolder extends RecyclerView.ViewHolder {
         protected TextView name;
         protected TextView designation;
         protected TextView resposibility;

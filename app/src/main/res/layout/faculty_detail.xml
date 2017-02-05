@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootrelative"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="14dp"
@@ -29,7 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Title"
+        android:text="@string/title"
         android:textColor="@color/text_light"
         android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_marginLeft="10dp"
-        android:text="Designation" />
+        android:text="@string/designation" />
 
     <RelativeLayout
         android:id="@+id/hidden"
@@ -54,10 +54,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Responsibility"
+            android:text="@string/responsibility"
             android:textColor="#515151" />
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/responsibility"
@@ -90,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="+91 7417108769"
+                    tools:text="+91 7417108769"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/cyan" />
 
@@ -108,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Int. Ext."
+                    android:text="@string/intext"
                     android:textColor="#434343"
                     android:textStyle="bold" />
 
@@ -117,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="0571"
+                    tools:text="0571"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
             </LinearLayout>

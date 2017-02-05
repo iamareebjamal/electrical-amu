@@ -75,7 +75,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
             }
         };
 
-        if (!a.mobile.equals("")) {
+        if (!"".equals(a.mobile)) {
             ah.call_fab.setVisibility(View.VISIBLE);
             ah.mobile.setText(a.mobile);
             ah.call_fab.setOnClickListener(callClick);
@@ -155,6 +155,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
                 break;
             default:
                 Toast.makeText(context, "Error : Invalid ViewType", Toast.LENGTH_SHORT).show();
+                break;
         }
         setAnimation(ah.card, i);
     }
@@ -177,7 +178,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
     @Override
     public int getItemCount() {
-        // TODO: Implement this method
         return members.size();
     }
 

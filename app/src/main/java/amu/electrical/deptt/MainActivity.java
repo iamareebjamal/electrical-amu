@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }
@@ -158,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                                 ft.commit();
                             }
                         }, 0);
-
                         break;
                     case R.id.nav_messages:
                         new Handler().postDelayed(new Runnable() {
@@ -174,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
                                 ft.commit();
                             }
                         }, 0);
-
                         break;
                     case R.id.nav_faculty:
                         new Handler().postDelayed(new Runnable() {
@@ -191,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, NAV_SLIDE_DELAY);
                         closeNavDrawer();
-
                         break;
                     case R.id.nav_department:
 
@@ -205,10 +203,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, NAV_SLIDE_DELAY);
                         //navView.getMenu().getItem(prevItem).setChecked(true);
-
                         break;
                     default:
                         closeNavDrawer();
+                        break;
                 }
 
                 return false;

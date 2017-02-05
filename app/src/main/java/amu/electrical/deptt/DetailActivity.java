@@ -89,6 +89,7 @@ public class DetailActivity extends AppCompatActivity implements AppBarLayout.On
             case android.R.id.home:
                 finish();
                 return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }

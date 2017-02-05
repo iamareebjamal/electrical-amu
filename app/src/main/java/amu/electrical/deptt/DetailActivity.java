@@ -16,8 +16,10 @@
 
 package amu.electrical.deptt;
 
-import amu.electrical.deptt.utils.Colors;
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -30,7 +32,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+
+import amu.electrical.deptt.utils.Colors;
 
 public class DetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
@@ -46,8 +52,10 @@ public class DetailActivity extends AppCompatActivity implements AppBarLayout.On
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeButtonEnabled(true);
+        if(ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setHomeButtonEnabled(true);
+        }
 
 
         collapsingToolbar = ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar));
@@ -57,6 +65,17 @@ public class DetailActivity extends AppCompatActivity implements AppBarLayout.On
         appBar.addOnOffsetChangedListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0571-2702235")));
+                } catch (ActivityNotFoundException ae) {
+                    Toast.makeText(getApplicationContext(), "No Dialer found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         Colors.tintFab(fab, this);
         loadBackdrop();
     }

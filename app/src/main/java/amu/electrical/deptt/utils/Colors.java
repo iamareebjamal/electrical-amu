@@ -1,12 +1,13 @@
 package amu.electrical.deptt.utils;
 
-import amu.electrical.deptt.R;
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
 import java.util.Random;
+
+import amu.electrical.deptt.R;
 
 public class Colors {
 

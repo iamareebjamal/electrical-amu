@@ -1,54 +1,115 @@
-<android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <RelativeLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="#aaffffff"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/green_main"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <ImageView
-                android:id="@+id/inCharge"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/in_charge"/>
-
-        <TextView
-                android:id="@+id/inChargeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_below="@+id/inCharge"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/trans_dark"
-                android:text="In Charge"/>
-
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:scrollbars="vertical"
-                android:padding="10dp"
-                android:layout_below="@+id/inChargeText"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-    </RelativeLayout>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/inCharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dp"
+                    android:src="@drawable/in_charge" />
+
+                <TextView
+                    android:id="@+id/inChargeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inCharge"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/in_charge"
+                    android:textColor="@color/trans_dark" />
+
+                <TextView
+                    android:id="@+id/inChargeIntext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:layout_below="@+id/inChargeText"
+                    android:layout_centerHorizontal="true"
+                    android:text="Int. Ext. : 3742, 3186"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inChargeIntext"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/inChargeFab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone"
+                        android:layout_margin="5dp"
+                        app:backgroundTint="@color/orange_accent"
+                        app:fabSize="mini"/>
+
+                    <TextView
+                        android:id="@+id/inChargePhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/in_charge_phone"
+                        android:textColor="@color/orange_accent" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            app:layout_anchor="@id/recycler"
-            app:layout_anchorGravity="bottom|center"
-            android:src="@drawable/ic_arrow_down"
-            android:layout_margin="@dimen/fab_margin"
-            app:borderWidth="0dp"
-            app:elevation="5dp"
-            android:clickable="true"/>
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:src="@drawable/ic_arrow_down"
+        app:borderWidth="0dp"
+        app:elevation="5dp"
+        app:layout_anchor="@id/recycler"
+        app:layout_anchorGravity="bottom|center" />
 
 </android.support.design.widget.CoordinatorLayout>

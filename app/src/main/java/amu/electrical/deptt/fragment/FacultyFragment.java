@@ -1,12 +1,11 @@
 package amu.electrical.deptt.fragment;
 
-import amu.electrical.deptt.MainActivity;
-import amu.electrical.deptt.R;
-import amu.electrical.deptt.utils.Colors;
-import amu.electrical.deptt.utils.FacultyMember;
-import amu.electrical.deptt.utils.ListAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,29 +15,59 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+
+import amu.electrical.deptt.MainActivity;
+import amu.electrical.deptt.R;
+import amu.electrical.deptt.model.FacultyAll;
+import amu.electrical.deptt.utils.Colors;
+import amu.electrical.deptt.utils.ListAdapter;
 
 
 public class FacultyFragment extends Fragment {
-    ArrayList list;
-    ListAdapter mAdapter;
+    private ArrayList list;
+    private ListAdapter mAdapter;
+    private FacultyAll faculty;
     private int level = 0;
+
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
         View v = inflater.inflate(R.layout.fragment_faculty, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Staff Members");
-        RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
-        setupRecyclerView(rv);
 
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        RecyclerView rv = (RecyclerView) v.findViewById(R.id.recycler);
+
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(rv.getContext()));
+        rv.setItemAnimator(new DefaultItemAnimator());
+
+        list = new ArrayList<>();
+
+        mAdapter = new ListAdapter(getActivity(), list);
+        rv.setAdapter(mAdapter);
+
+        final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         Colors.tintFab(fab, getActivity());
         fab.hide();
 
@@ -50,7 +79,54 @@ public class FacultyFragment extends Fragment {
             inChargeText.setBackground(shape);
         else
             inChargeText.setBackgroundDrawable(shape);
+
+        TextView inChargeIntext = (TextView) v.findViewById(R.id.inChargeIntext);
+        shape.setCornerRadius(inChargeIntext.getWidth() + 100);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            inChargeIntext.setBackground(shape);
+        else
+            inChargeIntext.setBackgroundDrawable(shape);
+
         setScrollBehavior(fab, rv);
+
+        DatabaseReference facultyReference = FirebaseDatabase.getInstance().getReference("faculty-all");
+        facultyReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                faculty = dataSnapshot.getValue(FacultyAll.class);
+                Log.d("Faculty", faculty.toString());
+                list.clear();
+                list.add("Works and Maintenance");
+                list.addAll(faculty.getWorks());
+
+                list.add("Supply Service Section");
+                list.addAll(faculty.getSupply());
+                mAdapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        View.OnClickListener onInchargePhoneClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:" + getContext().getString(R.string.in_charge_phone)));
+                try {
+                    getContext().startActivity(callIntent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(getContext(), "No Dialer found", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        v.findViewById(R.id.inChargeFab).setOnClickListener(onInchargePhoneClickListener);
+        v.findViewById(R.id.inChargePhone).setOnClickListener(onInchargePhoneClickListener);
+
         return v;
     }
 
@@ -79,10 +155,10 @@ public class FacultyFragment extends Fragment {
                 }
 
                 fab.hide();
-                if (!recyclerView.canScrollVertically(1) && level < 3) {
+                /*if (!recyclerView.canScrollVertically(1) && level < 3) {
                     fab.show();
                     //recyclerView.setPadding(0,0,0,fab.getMeasuredHeight());
-                }
+                }*/
             }
 
         });
@@ -97,7 +173,7 @@ public class FacultyFragment extends Fragment {
 
 
         });
-        fab.setOnClickListener(new View.OnClickListener() {
+        /*fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View p1) {
@@ -109,92 +185,37 @@ public class FacultyFragment extends Fragment {
             }
 
 
-        });
+        });*/
     }
 
-    private void setupRecyclerView(RecyclerView rv) {
-        // TODO: Implement this method
-
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(rv.getContext()));
-        rv.setItemAnimator(new DefaultItemAnimator());
-
-
-        list = new ArrayList<Object>();
-
-        String[] names = loadStringArray(R.array.works_names);
-        String[] designations = loadStringArray(R.array.works_designation);
-        String[] responsibilities = loadStringArray(R.array.works_responsibility);
-        String[] mobiles = loadStringArray(R.array.works_mobile);
-        String[] intexts = loadStringArray(R.array.works_intext);
-
-
-        list.add("Works and Maintenance");
-        for (int i = 0; i < names.length; i++) {
-            try {
-                list.add(new FacultyMember(names[i], designations[i], responsibilities[i], mobiles[i], intexts[i]));
-            } catch (ArrayIndexOutOfBoundsException e) {
-                list.add(new FacultyMember(names[i], designations[i], responsibilities[i], mobiles[i], ""));
-            }
-        }
-
-        names = loadStringArray(R.array.supply_names);
-        designations = loadStringArray(R.array.supply_designation);
-        responsibilities = loadStringArray(R.array.supply_responsibility);
-        mobiles = loadStringArray(R.array.supply_mobile);
-
-        list.add("Supply Service Section");
-        for (int i = 0; i < names.length; i++) {
-            list.add(new FacultyMember(names[i], designations[i], responsibilities[i], mobiles[i], ""));
-        }
-
-        mAdapter = new ListAdapter(getActivity(), list);
-        rv.setAdapter(mAdapter);
-    }
+    /*
 
     private void loadMore(int level) {
-
-        String[] names, designations, mobiles;
+        if(faculty==null)
+            return;
 
         switch (level) {
             case 0:
-                names = loadStringArray(R.array.office_names);
-                designations = loadStringArray(R.array.office_designation);
-                mobiles = loadStringArray(R.array.office_mobile);
 
                 list.add("Office Staff");
-
-                for (int i = 0; i < names.length; i++) {
-                    list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
-                }
+                list.addAll(faculty.getOffice());
                 mAdapter.notifyDataSetChanged();
                 break;
             case 1:
-                names = loadStringArray(R.array.technical_names);
-                designations = loadStringArray(R.array.technical_designation);
-                mobiles = loadStringArray(R.array.technical_mobile);
-
                 list.add("Technical Staff");
-                for (int i = 0; i < names.length; i++) {
-                    list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
-                }
+                list.addAll(faculty.getTechnical());
                 mAdapter.notifyDataSetChanged();
                 break;
             case 2:
-                names = loadStringArray(R.array.daily_names);
-                designations = loadStringArray(R.array.daily_designation);
-                mobiles = loadStringArray(R.array.daily_mobile);
 
                 list.add("Daily Wager Staff");
-                for (int i = 0; i < names.length; i++) {
-                    list.add(new FacultyMember(names[i], designations[i], "", mobiles[i], ""));
-                }
+                list.addAll(faculty.getDaily());
                 mAdapter.notifyDataSetChanged();
                 break;
             default:
                 Toast.makeText(getActivity().getApplicationContext(), "No More Information", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     private String[] loadStringArray(int id) {
         return getActivity().getResources().getStringArray(id);

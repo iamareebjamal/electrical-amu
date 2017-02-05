@@ -1,8 +1,5 @@
 package amu.electrical.deptt.fragment;
 
-import amu.electrical.deptt.MainActivity;
-import amu.electrical.deptt.R;
-import amu.electrical.deptt.utils.Colors;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
+
+import amu.electrical.deptt.MainActivity;
+import amu.electrical.deptt.R;
+import amu.electrical.deptt.utils.Colors;
 
 public class HomeFragment extends Fragment {
     @Override

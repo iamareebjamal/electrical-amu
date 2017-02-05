@@ -1,7 +1,7 @@
-package amu.electrical.deptt.utils;
+package amu.electrical.deptt.model;
 
 public class FacultyMember {
-    protected String name, designation, responsibility, mobile, intext;
+    public String name, responsibility, designation, mobile, intext;
 
     public FacultyMember() {
     }
@@ -13,5 +13,9 @@ public class FacultyMember {
         this.mobile = mobile;
         this.intext = intext;
     }
-}
 
+    @Override
+    public String toString() {
+        return "\nName -> " + name;
+    }
+}

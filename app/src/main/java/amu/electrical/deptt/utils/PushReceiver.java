@@ -1,106 +1,51 @@
 package amu.electrical.deptt.utils;
 
-import amu.electrical.deptt.MainActivity;
-import amu.electrical.deptt.messages.Message;
-import amu.electrical.deptt.messages.MessageDump;
-import amu.electrical.deptt.messages.MessageManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import com.parse.ParsePushBroadcastReceiver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
 
-public class PushReceiver extends ParsePushBroadcastReceiver {
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 
-    private static boolean SHOW_TESTS = true;
+import amu.electrical.deptt.MainActivity;
+import amu.electrical.deptt.R;
 
-    private MessageManager messageManager;
-    private Intent parseIntent;
-    private String TAG = "PushReceiver";
-    private NotificationUtils notificationUtils;
+public class PushReceiver extends FirebaseMessagingService {
 
-    public PushReceiver() {
-        super();
-    }
+    private static final String TAG = "MyFirebaseMsgService";
 
     @Override
-    protected void onPushReceive(Context context, Intent intent) {
-        //super.onPushReceive(context, intent);
-        if (intent == null)
-            return;
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        String title = remoteMessage.getNotification().getTitle();
+        if (title == null)
+            title = "Spark AMU";
 
-        messageManager = new MessageManager(context);
-        try {
-            JSONObject json = new JSONObject(intent.getStringExtra("com.parse.Data"));
-            Log.d(TAG, "Push Data received : " + json.toString());
-            parseIntent = intent;
-            if (json.has("alert")) {
-                String message = json.getString("alert");
-                showNotificationMessage(context, "New Notification", message, new Intent(context, MainActivity.class));
-            } else {
-                parsePushJson(context, json);
-            }
-        } catch (JSONException e) {
-            Log.e(TAG, "Push message json exception: " + e.getMessage());
-        }
+        sendNotification(title, remoteMessage.getNotification().getBody());
     }
 
-    private void parsePushJson(Context context, JSONObject json) {
-        // TODO: Implement this method
-        try {
-            //Custom JSON
-            boolean isBackground = json.getBoolean("is_background");
+    private void sendNotification(String title, String messageBody) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
 
-            //Don't show test notificatons if Release version is out
-            try {
-                boolean isTest = json.getBoolean("is_test");
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_noti_small)
+                .setColor(getColor(R.color.green_main))
+                .setContentTitle(title)
+                .setContentText(messageBody)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
 
-                if (isTest) Log.d(TAG, "Test Notification Received.\tSHOW_TEST : " + SHOW_TESTS);
-                if (isTest && !SHOW_TESTS)
-                    return;
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-            } catch (JSONException e) {
-                Log.e(TAG, "is_test field not found");
-            }
-
-            JSONObject data = json.getJSONObject("data");
-            String title = data.getString("title");
-            String message = data.getString("message");
-            if (!isBackground) {
-                Intent resultIntent = new Intent(context, MainActivity.class);
-                resultIntent.putExtras(parseIntent.getExtras());
-
-                Message receivedMessage = new Message(resultIntent, title, message, System.currentTimeMillis());
-                showNotificationMessage(context, receivedMessage.getTitle(), receivedMessage.getMessage(), resultIntent);
-                messageManager.saveMessage(receivedMessage);
-                Intent messageInserted = new Intent(MessageDump.TAG);
-                context.sendBroadcast(messageInserted);
-            }
-        } catch (JSONException e) {
-            Log.e(TAG, "Push message json exception: " + e.getMessage() + "\nActual Json data:\n" + json.toString());
-        }
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
-
-    private void showNotificationMessage(Context context, String title, String message, Intent intent) {
-        // TODO: Implement this method
-        notificationUtils = new NotificationUtils(context);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        notificationUtils.showNotification(title, message, intent);
-        Log.d(TAG, "Notification shown : " + message + " : " + title);
-    }
-
-    @Override
-    protected void onPushDismiss(
-            Context context, Intent intent) {
-        super.onPushDismiss(context, intent);
-    }
-
-    @Override
-    protected void onPushOpen(
-            Context context, Intent intent) {
-        super.onPushOpen(context, intent);
-    }
-
-
 }

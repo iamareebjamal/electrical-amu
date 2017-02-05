@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Electrical AMU</string>
+    <string name="app_name">Electricity AMU</string>
     <string name="about_department">The Department of Electricity was established in 1962 to manages over all electrical
         infrastructure of the Aligarh Muslim University, Aligarh. The Department is managing complete electrical network
         and committed to provide untreated power supply to the departments, offices, Hall of residences and Staff
@@ -17,4 +17,9 @@
         electrification while the internal electrification is managed by the Works and Maintenance section.\nThe present
         sanctioned load of the University main campus is <b><i>8500KVA</i></b> and the sanctioned load of the new campus is <b><i>650KW.</i></b>
     </string>
+    <string name="intro">The Official Android Application of\nElectricity, AMU</string>
+    <string name="welcome">Welcome to</string>
+    <string name="department">Electricity, AMU</string>
+    <string name="in_charge">Dr. Mohd Rihan, In Charge</string>
+    <string name="in_charge_phone">+91&#8211;9219605655</string>
 </resources>

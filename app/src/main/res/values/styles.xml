@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="@style/AppTheme.Base"/>
+    <style name="AppTheme" parent="AppThemeBase" />
 
-    <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/green_main</item>
         <item name="colorPrimaryDark">@color/green_dark</item>
         <item name="colorAccent">@color/orange_accent</item>
@@ -27,7 +27,7 @@
         <item name="colorControlHighlight">@color/trans_light</item>
     </style>
 
-    <style name="DetailTheme" parent="AppTheme"/>
+    <style name="DetailTheme" parent="AppTheme" />
 
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>

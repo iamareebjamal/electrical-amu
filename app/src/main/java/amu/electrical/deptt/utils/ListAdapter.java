@@ -1,6 +1,5 @@
 package amu.electrical.deptt.utils;
 
-import amu.electrical.deptt.R;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+
+import amu.electrical.deptt.R;
+import amu.electrical.deptt.model.FacultyMember;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
 
@@ -56,7 +58,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         ah.name.setText(a.name);
         ah.designation.setText(a.designation);
 
-        if (!a.responsibility.equals("")) {
+        if (a.responsibility != null && !a.responsibility.equals("")) {
             ah.resposibility.setVisibility(View.VISIBLE);
             ah.resposibility.setText("Responsibility : " + a.responsibility);
         } else
@@ -85,7 +87,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PlaceHolder> {
         }
 
 
-        if (!a.intext.equals("")) {
+        if (a.intext != null && !a.intext.equals("")) {
             ah.intext.setText(a.intext);
             ah.intext.setVisibility(View.VISIBLE);
             (ah.card.findViewById(R.id.inttext)).setVisibility(View.VISIBLE);

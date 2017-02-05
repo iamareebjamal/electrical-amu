@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,30 +14,28 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:background="@drawable/header"
-        android:padding="16dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        android:orientation="vertical"
-        android:gravity="bottom">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="192dp"
+    android:background="@drawable/header"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
     <ImageView
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:id="@+id/imageView3"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:onClick="newMessage"
-            android:src="@drawable/spark"/>
+        android:id="@+id/imageView3"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:src="@drawable/spark" />
 
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Electrical Department, AMU"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/department"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>

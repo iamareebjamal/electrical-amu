@@ -1,56 +1,40 @@
-<android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/root"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
 
     <RelativeLayout
-            android:id="@+id/no_message"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="30dp">
+        android:id="@+id/no_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="30dp">
 
         <ImageView
-                android:id="@+id/empty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/empty"/>
+            android:id="@+id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/empty" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/empty"
-                android:layout_centerHorizontal="true"
-                android:padding="4dp"
-                android:textStyle="italic"
-                android:textSize="23sp"
-                android:text="No new Messages"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:text="No new Messages"
+            android:textSize="23sp"
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            app:layout_anchor="@id/root"
-            app:layout_anchorGravity="bottom|center"
-            android:src="@drawable/ic_delete"
-            android:layout_margin="@dimen/fab_margin"
-            app:layout_behavior="amu.electrical.deptt.utils.FABBehaviour"
-            app:borderWidth="0dp"
-            app:elevation="5dp"
-            app:backgroundTint="@color/red"
-            android:clickable="true"/>
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 </android.support.design.widget.CoordinatorLayout>

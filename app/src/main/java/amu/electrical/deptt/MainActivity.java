@@ -1,15 +1,8 @@
 package amu.electrical.deptt;
 
-import amu.electrical.deptt.fragment.FacultyFragment;
-import amu.electrical.deptt.fragment.HomeFragment;
-import amu.electrical.deptt.fragment.MessageFragment;
-import amu.electrical.deptt.messages.Message;
-import amu.electrical.deptt.messages.MessageDump;
-import amu.electrical.deptt.messages.MessageManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -17,30 +10,36 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import com.parse.ParseAnalytics;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import amu.electrical.deptt.fragment.FacultyFragment;
+import amu.electrical.deptt.fragment.HomeFragment;
+import amu.electrical.deptt.fragment.MessageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    int prevItem;
+    static {
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    }
+
     private DrawerLayout mDrawerLayout;
     private HomeFragment hf;
     private MessageFragment mf;
-    BroadcastReceiver messageInsert = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(MessageDump.TAG)) {
-                refreshMessages();
-                Log.d(MessageDump.TAG, "Broadcast Received");
-            }
-        }
-    };
     private FacultyFragment ff;
     private int NAV_SLIDE_DELAY = 250;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,19 +47,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
 
+        context = this;
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ParseAnalytics.trackAppOpened(getIntent());
-        registerReceiver(messageInsert, new IntentFilter(MessageDump.TAG));
-
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+
+        navView.getHeaderView(0).findViewById(R.id.imageView3).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (BuildConfig.DEBUG) {
+
+                    final EditText editText = new EditText(context);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setView(editText);
+                    alert.setPositiveButton("YEAH", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (editText.getText().toString().equals("iamareebjamal")) {
+                                FirebaseMessaging.getInstance().subscribeToTopic("debug");
+                                Toast.makeText(context, "Subscribed to debug mode", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, "WRONG!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                    alert.show();
+                }
+
+                return true;
+            }
+        });
+
         if (navView != null)
             setUpNavView(navView);
 
@@ -70,31 +97,10 @@ public class MainActivity extends AppCompatActivity {
             hf = new HomeFragment();
 
         MenuItem home = navView.getMenu().getItem(0);
-        prevItem = home.getItemId();
         home.setChecked(true);
         ft.replace(R.id.rootframe, hf);
         ft.commit();
     }
-
-    //Testing - Delete
-    public void newMessage(View v) {
-        new MessageManager(this).saveMessage(new Message("Hello", "Simple Notification", System.currentTimeMillis()));
-        Intent messageInserted = new Intent(MessageDump.TAG);
-        sendBroadcast(messageInserted);
-        if (mf != null) {
-            mf.inserted();
-        }
-    }
-
-    private void refreshMessages() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (mf != null) {
-            mf = new MessageFragment();
-            ft.replace(R.id.rootframe, mf);
-            ft.commit();
-        }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -146,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 mItem.setChecked(true);
-                                prevItem = mItem.getItemId();
                                 if (hf == null) {
                                     hf = new HomeFragment();
                                 } else {
@@ -163,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 mItem.setChecked(true);
-                                prevItem = mItem.getItemId();
                                 if (mf == null) {
                                     mf = new MessageFragment();
                                 } else {
@@ -180,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 mItem.setChecked(true);
-                                prevItem = mItem.getItemId();
                                 if (ff == null) {
                                     ff = new FacultyFragment();
                                 } else {
@@ -209,8 +212,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     default:
                         closeNavDrawer();
-
-
                 }
 
                 return false;

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:opacity="opaque">
-    <item android:drawable="@android:color/white"/>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@android:color/white" />
     <item android:bottom="@dimen/launchscreens_product_bottom">
         <bitmap
-                android:gravity="center"
-                android:src="@drawable/spark_color_144dp"/>
+            android:gravity="center"
+            android:src="@drawable/spark_color_144dp" />
     </item>
     <item android:bottom="@dimen/launchscreens_logo_bottom">
         <bitmap
-                android:gravity="bottom|center"
-                android:src="@drawable/sparklogo_dark20"/>
+            android:gravity="bottom|center"
+            android:src="@drawable/sparklogo_dark20" />
     </item>
 </layer-list>

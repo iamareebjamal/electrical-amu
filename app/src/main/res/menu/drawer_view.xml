@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,21 +17,21 @@
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_home"
-                android:icon="@drawable/ic_dashboard"
-                android:title="Home"/>
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_dashboard"
+            android:title="Home" />
         <item
-                android:id="@+id/nav_messages"
-                android:icon="@drawable/ic_notifications"
-                android:title="Notifications"/>
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_notifications"
+            android:title="Notifications" />
         <item
-                android:id="@+id/nav_faculty"
-                android:icon="@drawable/ic_faculty"
-                android:title="Staff Members"/>
+            android:id="@+id/nav_faculty"
+            android:icon="@drawable/ic_faculty"
+            android:title="Staff Members" />
         <item
-                android:id="@+id/nav_department"
-                android:icon="@drawable/ic_department"
-                android:title="Department"/>
+            android:id="@+id/nav_department"
+            android:icon="@drawable/ic_department"
+            android:title="Department" />
     </group>
 
     <!--   discuss - Feedback

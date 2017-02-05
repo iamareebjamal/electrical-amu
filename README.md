@@ -14,5 +14,5 @@
 - etc
 
 ### Author
-[@iamareebjamal](https://github.com/iamareebjamal)
+Areeb Jamal [@iamareebjamal](https://github.com/iamareebjamal)  
 Divya Prakash Varshney [@divs4debu](https://github.com/divs4debu)

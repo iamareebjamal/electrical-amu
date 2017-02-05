@@ -48,14 +48,14 @@
                     android:id="@+id/inChargeIntext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/inChargeText"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:paddingBottom="10dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:paddingTop="10dp"
-                    android:layout_below="@+id/inChargeText"
-                    android:layout_centerHorizontal="true"
-                    android:text="Int. Ext. : 3742, 3186"/>
+                    android:text="Int. Ext. : 3742, 3186" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -63,17 +63,17 @@
                     android:layout_below="@+id/inChargeIntext"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/inChargeFab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_phone"
                         android:layout_margin="5dp"
+                        android:src="@drawable/ic_phone"
                         app:backgroundTint="@color/orange_accent"
-                        app:fabSize="mini"/>
+                        app:fabSize="mini" />
 
                     <TextView
                         android:id="@+id/inChargePhone"

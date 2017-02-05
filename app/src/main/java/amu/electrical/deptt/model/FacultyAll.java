@@ -12,7 +12,7 @@ public class FacultyAll {
 
     @Override
     public String toString() {
-        return  "Works : \n" + works.values() + "\n" +
+        return "Works : \n" + works.values() + "\n" +
                 "Supply : \n" + supply.values();
     }
 

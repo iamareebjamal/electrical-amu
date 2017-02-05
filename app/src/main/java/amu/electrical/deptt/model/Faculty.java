@@ -2,7 +2,6 @@ package amu.electrical.deptt.model;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.TreeMap;
 
 public class Faculty {

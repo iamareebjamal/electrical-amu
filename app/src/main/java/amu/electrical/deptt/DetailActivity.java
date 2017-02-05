@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity implements AppBarLayout.On
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        if(ab != null) {
+        if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setHomeButtonEnabled(true);
         }
